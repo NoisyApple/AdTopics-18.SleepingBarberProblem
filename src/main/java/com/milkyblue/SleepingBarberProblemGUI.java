@@ -15,6 +15,7 @@ import javax.swing.JTextField;
 
 import com.github.tomaslanger.chalk.Chalk;
 
+// Class SleepingBarberProblemGUI. Models the GUI.
 public class SleepingBarberProblemGUI {
 
   private JFrame mainFrame;
@@ -23,6 +24,7 @@ public class SleepingBarberProblemGUI {
   private JTextField txtChairAmount;
   private JButton btnExecute;
 
+  // Class constructor.
   public SleepingBarberProblemGUI() {
     mainFrame = new JFrame("Sleeping Barber Problem");
     mainPanel = new JPanel(new BorderLayout());
@@ -40,12 +42,18 @@ public class SleepingBarberProblemGUI {
     launch();
   }
 
+  // Adds attributes to elements in the class.
   private void addAttributes() {
     mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     mainFrame.setResizable(false);
   }
 
+  // Adds listeners to elements in GUI.
   private void addListeners() {
+
+    // When btnExecute is pressed a new BarberShop is created with the amount of
+    // chairs specified in the GUI. Also a CustomerGenerator and a Barber Threads
+    // are started with an ExecutorService.
     btnExecute.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
 
@@ -72,6 +80,7 @@ public class SleepingBarberProblemGUI {
     });
   }
 
+  // Builds the GUI.
   private void build() {
     topPanel.add(lblAdvice);
 
@@ -87,6 +96,7 @@ public class SleepingBarberProblemGUI {
     mainFrame.add(mainPanel);
   }
 
+  // Launches the GUI by setting the mainFrame's visible value to true.
   private void launch() {
     mainFrame.setVisible(true);
     mainFrame.pack();
