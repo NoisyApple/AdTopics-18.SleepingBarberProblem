@@ -1,5 +1,7 @@
 package com.milkyblue;
 
+import com.github.tomaslanger.chalk.Chalk;
+
 // Barber class. Consumer Based.
 public class Barber implements Runnable {
 
@@ -18,18 +20,19 @@ public class Barber implements Runnable {
       }
       if (!buffer.isEmpty()) {
         Customer customer = buffer.getCustomer();
-        System.out.println("[Barber] cutting C-" + customer.getId() + "'s hair.");
+        System.out.println(
+            "[" + Chalk.on("Barber").yellow() + "] cutting " + Chalk.on("C-" + customer.getId()).cyan() + "'s hair.");
         cutHair(customer);
       } else {
-        System.out.println("[Barber] sleeping.");
+        System.out.println("[" + Chalk.on("Barber").yellow() + "] sleeping.");
       }
     }
   }
 
   private void cutHair(Customer customer) {
     try {
-      Thread.sleep((int) Math.floor(Math.random() * 15000));
-      System.out.println("[C-" + customer.getId() + "] Customer got its hair cut.");
+      Thread.sleep((int) Math.floor(Math.random() * 10000));
+      System.out.println("[" + Chalk.on("C-" + customer.getId()).cyan() + "] Customer got its hair cut.");
       buffer.remove(customer);
     } catch (Exception e) {
       // TODO: handle exception

@@ -1,5 +1,7 @@
 package com.milkyblue;
 
+import com.github.tomaslanger.chalk.Chalk;
+
 public class Customer {
 
   private BarberShop buffer;
@@ -18,9 +20,9 @@ public class Customer {
       } catch (Exception e) {
         // TODO: handle exception
       }
-      System.out.println("[C-" + id + "] Customer is waiting his turn.");
+      System.out.println("[" + Chalk.on("C-" + id).cyan() + "] Customer is waiting his turn.");
     } else {
-      System.out.println("[C-" + id + "] No available chairs, customer leave.");
+      System.out.println("[" + Chalk.on("C-" + id).red() + "] No available chairs, customer leave.");
     }
   }
 
